@@ -34,6 +34,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                     <li><a class="nav-link{{Request::is('product*') ? ' active ' : ''}}" href="/product">Produtos</a></li>
+                    <li><a class="nav-link{{Request::is('costumer*') ? ' active ' : ''}}" href="/costumer">Clientes</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
