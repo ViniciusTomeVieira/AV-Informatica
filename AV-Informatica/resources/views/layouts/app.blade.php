@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'AV Informatica') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -23,7 +23,47 @@
         $( document ).ready(function() {
             $('#cpf').mask('000.000.000-00');
             $('#cep').mask('00000-000');
+            $('#salvarPedido').prop("disabled", true);
         });
+
+        let idProdutos = 0;
+        let listaProdutos = []
+        function adicionarNaLista(id){
+            listaProdutos.push(id)
+        }
+        function adicionarProduto(descricao,id){
+            idProdutos+=1
+            let produtos = document.getElementById("listaProdutos")
+            produtos.innerHTML += "<p>"+descricao+"</p><li class='list-group-item'><form class='float-right' style='display: inline' action='' method='post'><label for='preco'>Preço</label><input type='text' class='form-control' id='preco"+id+"' name='valor' value='' onclick='adicionarNaLista("+id+")'><label for='quantidade'>Quantidade</label><input type='text' class='form-control' id='quantidade"+id+"' name='valor' value=''><label for='desconto'>Desconto</label><input type='text' class='form-control' id='desconto"+id+"' name='valor' value=''></form></li><input type='hidden' name='"+id+"' id='cliente' value='"+id+"'>" 
+            
+            //$("<div class='form-group'><p>"+descricao+"</p><li class='list-group-item'><form class='float-right' style='display: inline' action='' method='post'><label for='preco'>Preço</label><input type='text' class='form-control' id='preco"+idProdutos+"' name='valor' value=''><label for='quantidade'>Quantidade</label><input type='text' class='form-control' id='quantidade"+idProdutos+"' name='valor' value=''><label for='desconto'>Desconto</label><input type='text' class='form-control' id='desconto"+idProdutos+"' name='valor' value=''></form></li></div>" ).insertBefore("#valor");
+            
+        }
+
+        function calcularValor(){
+            let valorCompra = 0
+                for (i = 0; i < listaProdutos.length; i++) {
+                    let preco = document.getElementById("preco"+listaProdutos[i]).value
+                    let quantidade = document.getElementById("quantidade"+listaProdutos[i]).value
+                    let desconto = document.getElementById("desconto"+listaProdutos[i]).value 
+                    if((preco/1 == preco) && (quantidade/1 == quantidade) && (desconto/1 == desconto)){   
+                        let total = preco * quantidade
+                        let valorDescontado = total * (desconto/100)
+                        total = total - valorDescontado
+                        valorCompra+= total 
+                    }else{
+                        alert('Existe algum valor inválido, favor verificar')
+                    } 
+                }
+                alert("valor "+ valorCompra)
+                document.getElementById('valorTotal').value = valorCompra
+                document.getElementById('salvarPedido').disabled = false;     
+                document.getElementById('products').disabled = true;     
+                document.getElementById('costumer').disabled = true;     
+        }
+        function atualizarCliente(idCliente){
+            document.getElementById('cliente').value = idCliente
+        }
     </script>
 </head>
 <body>
@@ -42,6 +82,7 @@
                     <ul class="navbar-nav mr-auto">
                     <li><a class="nav-link{{Request::is('product*') ? ' active ' : ''}}" href="/product">Produtos</a></li>
                     <li><a class="nav-link{{Request::is('costumer*') ? ' active ' : ''}}" href="/costumer">Clientes</a></li>
+                    <li><a class="nav-link{{Request::is('pedido*') ? ' active ' : ''}}" href="/pedido">Pedidos</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
