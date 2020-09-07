@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Costumer extends Model
 {
+    public function pedidos(){
+        return $this->hasMany('App\Pedido');
+    }
     protected $fillable = [
         'nome', 'cpf', 'logradouro', 'numero', 'bairro', 'cidade', 'estado', 'cep'
     ];

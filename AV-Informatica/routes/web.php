@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Route::resource('product','ProductController');
 Route::resource('costumer','CostumerController');
+Route::resource('pedido','PedidoController');
 
 Auth::routes();
 
