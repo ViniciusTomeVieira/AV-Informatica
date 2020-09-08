@@ -23,6 +23,7 @@
         $( document ).ready(function() {
             $('#cpf').mask('000.000.000-00');
             $('#cep').mask('00000-000');
+            //$('#preco').mask('00000000');
             $('#salvarPedido').prop("disabled", true);
         });
 
@@ -31,10 +32,11 @@
         function adicionarNaLista(id){
             listaProdutos.push(id)
         }
-        function adicionarProduto(descricao,id){
+        function adicionarProduto(descricao,id,preco){
             idProdutos+=1
+            let descontoPadrao = document.getElementById("cliente").alt
             let produtos = document.getElementById("listaProdutos")
-            produtos.innerHTML += "<p>"+descricao+"</p><li class='list-group-item'><form class='float-right' style='display: inline' action='' method='post'><label for='preco'>Preço</label><input type='text' class='form-control' id='preco"+id+"' name='valor' value='' onclick='adicionarNaLista("+id+")'><label for='quantidade'>Quantidade</label><input type='text' class='form-control' id='quantidade"+id+"' name='valor' value=''><label for='desconto'>Desconto</label><input type='text' class='form-control' id='desconto"+id+"' name='valor' value=''></form></li><input type='hidden' name='"+id+"' id='cliente' value='"+id+"'>" 
+            produtos.innerHTML += "<p>"+descricao+"</p><li class='list-group-item'><form class='float-right' style='display: inline' action='' method='post'><label for='preco'>Preço</label><input type='text' class='form-control' id='preco"+id+"' name='valor' value='"+preco+"' readonly><label for='quantidade'>Quantidade</label><input type='text' class='form-control' id='quantidade"+id+"' name='valor' value='' onclick='adicionarNaLista("+id+")'><label for='desconto'>Desconto</label><input type='text' class='form-control' id='desconto"+id+"' name='valor' value='"+descontoPadrao+"' readonly></form></li><input type='hidden' name='"+id+"' id='cliente' value='"+id+"'>" 
             
             //$("<div class='form-group'><p>"+descricao+"</p><li class='list-group-item'><form class='float-right' style='display: inline' action='' method='post'><label for='preco'>Preço</label><input type='text' class='form-control' id='preco"+idProdutos+"' name='valor' value=''><label for='quantidade'>Quantidade</label><input type='text' class='form-control' id='quantidade"+idProdutos+"' name='valor' value=''><label for='desconto'>Desconto</label><input type='text' class='form-control' id='desconto"+idProdutos+"' name='valor' value=''></form></li></div>" ).insertBefore("#valor");
             
@@ -61,8 +63,11 @@
                 document.getElementById('products').disabled = true;     
                 document.getElementById('costumer').disabled = true;     
         }
-        function atualizarCliente(idCliente){
+
+        
+        function atualizarCliente(idCliente,descontoPadrao){
             document.getElementById('cliente').value = idCliente
+            document.getElementById('cliente').alt = descontoPadrao
         }
     </script>
 </head>
