@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('descricao');
             $table->string('fabricante');
+            $table->string('preco');
             $table->timestamps();
         });
     }

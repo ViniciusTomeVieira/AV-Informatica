@@ -40,11 +40,13 @@ class ProductController extends Controller
     {
         $request->validate([
             'descricao' => 'required|min:2',
-            'fabricante' => 'required|min:2'
+            'fabricante' => 'required|min:2',
+            'preco' => 'required|numeric'
         ]);
         $product = new Product([
             'descricao' => $request->descricao,
-            'fabricante' => $request->fabricante
+            'fabricante' => $request->fabricante,
+            'preco' => $request->preco
         ]);
         $product->save();
 
@@ -90,12 +92,14 @@ class ProductController extends Controller
     {
         $request->validate([
             'descricao' => 'required|min:2',
-            'fabricante' => 'required|min:2'
+            'fabricante' => 'required|min:2',
+            'preco' => 'required'
         ]);
 
         $product->update([
             'descricao' => $request->descricao,
-            'fabricante' => $request->fabricante
+            'fabricante' => $request->fabricante,
+            'preco' => $request->preco
         ]);
 
         return $this->index()->with([

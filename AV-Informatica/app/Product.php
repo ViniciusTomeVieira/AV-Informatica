@@ -10,6 +10,6 @@ class Product extends Model
         return $this->belongsToMany('App\Pedido');
     }
     protected $fillable = [
-        'descricao', 'fabricante',
+        'descricao', 'fabricante', 'preco'
     ];
 }
