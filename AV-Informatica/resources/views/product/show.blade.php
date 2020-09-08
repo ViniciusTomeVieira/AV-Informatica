@@ -9,6 +9,7 @@
                     <div class="card-body">
                         <b>Descrição: {{$product->descricao}}</b>
                         <p>Fabricante: {{$product->fabricante}}</p>
+                        <p>Preço: {{$product->preco}}</p>
                     </div>
             </div>
             <div class="mt-2">

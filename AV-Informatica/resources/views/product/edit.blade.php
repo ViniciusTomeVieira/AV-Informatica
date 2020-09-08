@@ -20,6 +20,11 @@
                                 <input type="text" class="form-control{{$errors->has('fabricante') ? ' border-danger' : '' }}" id="fabricante" name="fabricante" value="{{$product->fabricante ?? old('fabricante')}}">
                                 <small class="form-text text-danger">{!! $errors->first('fabricante') !!}</small>
                             </div>
+                            <div class="form-group">
+                                <label for="preco">Preço</label>
+                                <input type="text" class="form-control{{$errors->has('preco') ? ' border-danger' : '' }}" id="preco" name="preco" value="{{$product->preco ?? old('preco')}}">
+                                <small class="form-text text-danger">{!! $errors->first('preco') !!}</small>
+                            </div>
                             <input class="btn btn-primary mt-4" type="submit" value="Salvar produto">
                         </form>
                         <a class="btn btn-primary float-right" href="/product"><i class="fas fa-arrow-circle-up"></i> Voltar</a>

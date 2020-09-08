@@ -17,7 +17,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="fabricante">Fabricante</label>
-                                <input type="text" class="form-control{{$errors->has('fabricante') ? ' border-danger' : '' }}" id="fabricante" name="fabricante" value="{{old('fabricante')}}">                                <small class="form-text text-danger">{!! $errors->first('fabricante') !!}</small>
+                                <input type="text" class="form-control{{$errors->has('fabricante') ? ' border-danger' : '' }}" id="fabricante" name="fabricante" value="{{old('fabricante')}}">                               
+                                <small class="form-text text-danger">{!! $errors->first('fabricante') !!}</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="preco">Preço</label>
+                                <input type="text" class="form-control{{$errors->has('preco') ? ' border-danger' : '' }}" id="preco" name="preco" value="{{old('preco')}}">                                
+                                <small class="form-text text-danger">{!! $errors->first('preco') !!}</small>
                             </div>
                             <input id="send" class="btn btn-primary mt-4" type="submit" value="Salvar produto">
                         </form>
