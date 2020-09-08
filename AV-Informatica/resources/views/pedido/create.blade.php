@@ -14,17 +14,17 @@
                             <label for="costumer">Cliente</label>
                                 <select class="form-control" name="costumer" id="costumer">
                                 @foreach($costumers as $costumer)
-                                    <option value="{{$costumer->id}}" onclick="atualizarCliente({{$costumer->id}})">{{$costumer->nome}}</option>
+                                    <option value="{{$costumer->id}}" id="{{$costumer->descontoPadrao}}" onclick="atualizarCliente(this.value,this.id)">{{$costumer->nome}}</option>
                                 @endforeach
                                 </select>
                             </div>
-                            <input type="hidden" name="cliente" id="cliente" value="">
+                            <input type="hidden" name="cliente" id="cliente" value="" alt="">
                             <div class="form-group">
                             <label for="product">Produtos</label>
                             <select class="form-control" name="products" id="products" >
                                 <option value="0">Selecione um produto</option>
                                 @foreach($products as $product)
-                                    <option value="{{$product->descricao}}" id="{{$product->id}}" onclick="adicionarProduto(this.value,this.id)">{{$product->descricao}}</option>
+                                    <option value="{{$product->descricao}}" id="{{$product->id}}"  onclick="adicionarProduto(this.value,this.id,{{$product->preco}})">{{$product->descricao}}</option>
                                 @endforeach
                                 </select>
                             </div>

@@ -19,26 +19,26 @@
                                 @endforeach
                                 </select>
                             </div>
-                            <input type="hidden" name="cliente" id="cliente" value="{{$pedido->costumer->id ?? old('$pedido->costumer->id')}}">
+                            <input type="hidden" name="cliente" id="cliente" value="{{$pedido->costumer->id ?? old('$pedido->costumer->id')}}" alt="{{$pedido->costumer->descontoPadrao}}">
                             <div class="form-group">
                             <label for="product">Produtos</label>
                             <select class="form-control" name="products" id="products" >
                                 <option value="0">Selecione um produto</option>
                                 @foreach($products as $product)
-                                    <option value="{{$product->descricao}}" id="{{$product->id}}" onclick="adicionarProduto(this.value,this.id)">{{$product->descricao}}</option>
+                                    <option value="{{$product->descricao}}" id="{{$product->id}}" onclick="adicionarProduto(this.value,this.id,{{$product->preco}})">{{$product->descricao}}</option>
                                 @endforeach
                                 </select>
                             </div>
                             <ul class="list-group" id="listaProdutos">
                                 @foreach($pedido->products as $product)
-                                <p>{{$product->descricao}} (insira os valores novamente)</p>
+                                <p>{{$product->descricao}} (insira as quantidades novamente)</p>
                                 <li class='list-group-item'>                    
                                     <label for='preco'>Preço</label>
-                                    <input type='text' class='form-control' id='preco{{$product->id}}' name='valor' value='{{$product->id}}' onclick="adicionarNaLista(this.value)">
+                                    <input type='text' class='form-control' id='preco{{$product->id}}' name='valor' value='{{$product->preco}}'  readonly="true">
                                     <label for='quantidade'>Quantidade</label>
-                                    <input type='text' class='form-control' id='quantidade{{$product->id}}' name='valor' value=''>
+                                    <input type='text' class='form-control' id='quantidade{{$product->id}}' name='valor' value='' onclick="adicionarNaLista({{$product->id}})">
                                     <label for='desconto'>Desconto</label>
-                                    <input type='text' class='form-control' id='desconto{{$product->id}}' name='valor' value=''>                  
+                                    <input type='text' class='form-control' id='desconto{{$product->id}}' name='valor' value='{{$pedido->costumer->descontoPadrao}}' readonly>                 
                                 </li>
                                 <input type='hidden' name="{{$product->id}}" id='cliente' value="{{$product->id}}">
                                 @endforeach

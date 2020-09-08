@@ -12,6 +12,7 @@
                         @foreach($pedido->products as $product)
                             <b>{{$product->descricao}}</b> 
                             <p>Fabricante: {{$product->fabricante}}</p>
+                            <p>Preço unitário: {{$product->preco}}</p>
                             <br>
                         @endforeach
                         <p><b>Valor do pedido: </b>{{$pedido->valor}}</p>
