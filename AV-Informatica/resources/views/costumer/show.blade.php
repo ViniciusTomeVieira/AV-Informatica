@@ -15,10 +15,11 @@
                         <p>Cidade: {{$costumer->cidade}}</p>
                         <p>Cep: {{$costumer->cep}}</p>
                         <p>Estado: {{$costumer->estado}}</p>
+                        <p>Desconto Padrão: {{$costumer->descontoPadrao}}</p>
                     </div>
             </div>
             <div class="mt-2">
-                <a class='btn btn-success btn-sm' href="/product">Voltar</a>
+                <a class='btn btn-success btn-sm' href="/costumer">Voltar</a>
             </div>
         </div>
     </div>

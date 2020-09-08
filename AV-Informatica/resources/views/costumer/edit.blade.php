@@ -44,6 +44,11 @@
                                 <label for="cep">Cep</label>
                                 <input type="text" class="form-control{{$errors->has('cep') ? ' border-danger' : '' }}" id="cep" name="cep" value="{{$costumer->cep ?? old('cep')}}">                                <small class="form-text text-danger">{!! $errors->first('fabricante') !!}</small>
                             </div>
+                            <div class="form-group">
+                                <label for="descontoPadrao">Desconto Padrão</label>
+                                <input type="text" class="form-control{{$errors->has('descontoPadrao') ? ' border-danger' : '' }}" id="descontoPadrao" name="descontoPadrao" value="{{$costumer->descontoPadrao ?? old('descontoPadrao')}}">                                
+                                <small class="form-text text-danger">{!! $errors->first('descontoPadrao') !!}</small>
+                            </div>
                             <input id="send" class="btn btn-primary mt-4" type="submit" value="Atualizar cliente">
                         </form>
                         <a class="btn btn-primary float-right" href="/costumer"><i class="fas fa-arrow-circle-up"></i> Voltar</a>
