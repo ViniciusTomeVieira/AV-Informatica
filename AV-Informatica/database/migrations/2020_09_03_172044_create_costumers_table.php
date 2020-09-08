@@ -24,6 +24,7 @@ class CreateCostumersTable extends Migration
             $table->string('cidade');
             $table->string('cep');
             $table->string('estado');
+            $table->string('descontoPadrao');
             $table->timestamps();
         });
     }

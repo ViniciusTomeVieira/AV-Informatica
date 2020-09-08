@@ -47,7 +47,8 @@ class CostumerController extends Controller
             'bairro' => 'required|min:2',
             'cidade' => 'required|min:2',
             'cep' => 'required|min:9',
-            'estado' => 'required|min:2'
+            'estado' => 'required|min:2',
+            'descontoPadrao' => 'required'
         ]);
         $costumer = new Costumer([
             'nome' => $request->nome,
@@ -57,7 +58,8 @@ class CostumerController extends Controller
             'bairro' => $request->bairro,
             'cidade' => $request->cidade,
             'cep' => $request->cep,
-            'estado' => $request->estado
+            'estado' => $request->estado,
+            'descontoPadrao' => $request->descontoPadrao
         ]);
 
         $costumer->save();
@@ -110,7 +112,8 @@ class CostumerController extends Controller
             'bairro' => 'required|min:2',
             'cidade' => 'required|min:2',
             'cep' => 'required|min:9',
-            'estado' => 'required|min:2'
+            'estado' => 'required|min:2',
+            'descontoPadrao' => 'required'
         ]);
 
         $costumer->update([
@@ -121,7 +124,8 @@ class CostumerController extends Controller
             'bairro' => $request->bairro,
             'cidade' => $request->cidade,
             'cep' => $request->cep,
-            'estado' => $request->estado
+            'estado' => $request->estado,
+            'descontoPadrao' => $request->descontoPadrao
         ]);
 
         return $this->index()->with([

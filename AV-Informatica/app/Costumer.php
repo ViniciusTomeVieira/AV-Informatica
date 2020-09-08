@@ -11,6 +11,6 @@ class Costumer extends Model
         return $this->hasMany('App\Pedido');
     }
     protected $fillable = [
-        'nome', 'cpf', 'logradouro', 'numero', 'bairro', 'cidade', 'estado', 'cep'
+        'nome', 'cpf', 'logradouro', 'numero', 'bairro', 'cidade', 'estado', 'cep', 'descontoPadrao'
     ];
 }
